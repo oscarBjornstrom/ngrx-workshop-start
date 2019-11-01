@@ -1,0 +1,17 @@
+.main-container {
+  display:flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.sidenav-full-height {
+  flex:1;
+}
+.sidenav-content {
+  padding: 3rem;
+
+  //background: radial-gradient(circle, rgba(29,25,73,1) 0%, rgba(7,7,31,1) 81%);
+}

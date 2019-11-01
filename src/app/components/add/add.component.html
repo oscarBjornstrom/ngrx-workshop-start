@@ -1,0 +1,39 @@
+<mat-card>
+  <form action="" [formGroup]="addForm">
+    <fieldset>
+      <legend>Add a series to the list</legend>
+      <div class=" d-flex flex-column">
+        <mat-form-field>
+          <mat-label>name</mat-label>
+          <input formControlName="name" type="text" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            image-url
+          </mat-label>
+          <input formControlName="imageUrl" type="text" matInput required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            description
+          </mat-label>
+          <textarea formControlName="description" type="text" matInput required rows="3"></textarea>
+        </mat-form-field>
+
+        <mat-label id="sliderLabel">Rating</mat-label>
+        <mat-slider
+          formControlName="rating"
+          aria-labelledby="sliderLabel"
+          max="10"
+          [thumbLabel]="true"
+          step="1"
+        ></mat-slider>
+      </div>
+
+    </fieldset>
+  </form>
+  <mat-card-actions>
+    <button mat-raised-button (click)="logValue()">Click me</button>
+
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,18 @@
+<mat-card class="responsive-card col-12 col-md-4 mr-4 mb-4">
+  <mat-card-header>
+    <mat-card-title>{{serie.name}}</mat-card-title>
+    <mat-card-subtitle>Rating: 9/10</mat-card-subtitle>
+  </mat-card-header>
+  <div class="center">
+    <img mat-card-image src="{{serie.imageURL}}" alt="image of a show">
+  </div>
+  <mat-card-content>
+    <p>{{serie.desciption}}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-icon-button (click)="serie.favorite = !serie.favorite">
+      <mat-icon>{{serie.favorite ? 'favorite' : 'favorite_border'}}</mat-icon>
+    </button>
+
+  </mat-card-actions>
+</mat-card>

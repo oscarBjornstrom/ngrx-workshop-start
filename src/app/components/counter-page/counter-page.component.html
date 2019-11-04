@@ -1,0 +1,18 @@
+<mat-card>
+  <h1>Counter</h1>
+
+  <div>
+    <p>{{counter}}</p>
+  </div>
+  <mat-card-actions>
+    <button mat-stroked-button (click)="addOne()">+1</button>
+    <button mat-stroked-button (click)="removeOne()">-1</button>
+    <button mat-stroked-button (click)="reset()">reset</button>
+    <div>
+      <mat-form-field>
+        <input type="number" matInput [(ngModel)]="numInput">
+      </mat-form-field>
+      <button mat-raised-button (click)="setValue()">setValue</button>
+    </div>
+  </mat-card-actions>
+</mat-card>

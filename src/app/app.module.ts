@@ -6,11 +6,12 @@ import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './shared/material/material.module';
 import {HomeComponent} from './core/home/home.component';
-import {AddComponent} from './components/add/add.component';
+import {AddComponent} from './components/add-series/add.component';
 import {HeaderComponent} from './core/header/header.component';
 import {SerieCardComponent} from './components/serie-card/serie-card.component';
-import {ReactiveFormsModule} from '@angular/forms';
-import { ProfileComponent } from './components/profile/profile.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ProfileComponent} from './components/profile/profile.component';
+import {CounterPageComponent} from './components/counter-page/counter-page.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,17 @@ import { ProfileComponent } from './components/profile/profile.component';
     AddComponent,
     HeaderComponent,
     SerieCardComponent,
-    ProfileComponent
+    ProfileComponent,
+    CounterPageComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
     // TODO 1: Add redux devtools
     // TODO 2: Connect reducers
   ],

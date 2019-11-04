@@ -1,0 +1,17 @@
+<app-add-item-form></app-add-item-form>
+
+<ng-container *ngIf="shoppingList$ | async as list">
+
+
+  <mat-card *ngIf="list.length">
+    <ul>
+      <app-list-item
+        *ngFor="let item of list; let i = index;"
+        [shoppingListItem]="item"
+        (removeItem)="removeItem(i)"
+      ></app-list-item>
+    </ul>
+
+    <p>{{totalLeft$ | async}}</p>
+  </mat-card>
+</ng-container>

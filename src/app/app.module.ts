@@ -12,6 +12,11 @@ import {SerieCardComponent} from './components/serie-card/serie-card.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ProfileComponent} from './components/profile/profile.component';
 import {CounterPageComponent} from './components/counter-page/counter-page.component';
+import { ProfileCardComponent } from './components/profile-card/profile-card.component';
+import { SeriesComponent } from './components/series/series.component';
+import { ShoppingListComponent } from './components/shopping-list/shopping-list.component';
+import { AddItemFormComponent } from './components/shopping-list/add-item-form/add-item-form.component';
+import { ListItemComponent } from './components/shopping-list/list-item/list-item.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +27,11 @@ import {CounterPageComponent} from './components/counter-page/counter-page.compo
     SerieCardComponent,
     ProfileComponent,
     CounterPageComponent,
+    ProfileCardComponent,
+    SeriesComponent,
+    ShoppingListComponent,
+    AddItemFormComponent,
+    ListItemComponent,
 
   ],
   imports: [

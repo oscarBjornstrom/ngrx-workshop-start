@@ -1,0 +1,12 @@
+<mat-card *ngIf="profile | async as userProfile">
+  <mat-card-header>
+    <mat-card-title>{{userProfile.username}}</mat-card-title>
+    <mat-card-subtitle *ngIf="userProfile.age">Age: {{userProfile.age}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p>{{userProfile.description}}</p>
+    <p *ngIf="userProfile.email">Email me at {{userProfile.email}} for inquiries</p>
+  </mat-card-content>
+
+</mat-card>

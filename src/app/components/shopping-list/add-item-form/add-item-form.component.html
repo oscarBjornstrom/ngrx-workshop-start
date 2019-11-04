@@ -1,0 +1,15 @@
+<mat-card class="small-card mb-4">
+  <form (ngSubmit)="addItemToList()" [formGroup]="addItemForm" class="d-flex flex-column">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text" matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Quantity</mat-label>
+      <input type="text" matInput formControlName="quantity">
+    </mat-form-field>
+    <button type="submit" mat-raised-button>Add to shopping list</button>
+  </form>
+
+</mat-card>

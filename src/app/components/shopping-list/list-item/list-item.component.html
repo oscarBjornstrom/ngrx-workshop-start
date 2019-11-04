@@ -1,0 +1,10 @@
+<li>
+  <div>
+    <mat-checkbox [value]="shoppingListItem" >
+      <span [ngClass]="{'item-checked': checkboxControl.value}">{{shoppingListItem.name}}</span>
+    </mat-checkbox>
+    <button (click)="removeItem.emit()" mat-icon-button>
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</li>

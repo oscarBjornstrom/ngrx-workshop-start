@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {SerieModel} from '../../shared/serie.model';
+import {SerieModel} from '../../../shared/serie.model';
 
 @Component({
   selector: 'app-serie-card',

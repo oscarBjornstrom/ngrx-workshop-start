@@ -19,7 +19,7 @@
     </mat-form-field>
   </form>
   <mat-card-actions>
-    <button mat-stroked-button (click)="toggleEdit()">
+    <button mat-stroked-button (click)="toggleEditAndSave()">
       <span>{{(isEdit | async) ? 'Save': 'Edit'}}</span>
     </button>
   </mat-card-actions>

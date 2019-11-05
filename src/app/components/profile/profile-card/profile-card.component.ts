@@ -7,6 +7,7 @@ import {ProfileService} from '../profile.service';
   styleUrls: ['./profile-card.component.scss']
 })
 export class ProfileCardComponent implements OnInit {
+  // TODO: Switch to selector to profile
   profile = this.profileService.profile;
   constructor(private profileService: ProfileService) { }
 

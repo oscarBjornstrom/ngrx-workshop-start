@@ -9,9 +9,9 @@
         *ngFor="let item of list; let i = index;"
         [shoppingListItem]="item"
         (removeItem)="removeItem(i)"
+        (updateItem)="updateItem(i)"
       ></app-list-item>
     </ul>
 
-    <p>{{totalLeft$ | async}}</p>
   </mat-card>
 </ng-container>

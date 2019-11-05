@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "ngrx-workshop-start"
+  "defaultProject": "ngrx-workshop-start",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

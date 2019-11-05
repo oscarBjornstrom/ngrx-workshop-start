@@ -8,16 +8,23 @@ import {tap} from 'rxjs/operators';
   styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent implements OnInit {
+  // TODO: use store selector
+  shoppingList$ = this.shoppingListService.shoppingList;
 
+  // TODO: Inject store
   constructor(private shoppingListService: ShoppingListService) {
   }
-
-  shoppingList$ = this.shoppingListService.shoppingList.pipe(tap(console.log));
 
   ngOnInit() {
   }
 
   removeItem(index) {
+    // TODO: Dispatch remove item action
     this.shoppingListService.removeItem(index);
+  }
+
+  updateItem(index) {
+    // TODO: Dispatch toggle acquired action
+    this.shoppingListService.toggleAcquired(index);
   }
 }

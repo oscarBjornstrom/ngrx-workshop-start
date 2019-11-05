@@ -1,14 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {BehaviorSubject, of} from 'rxjs';
-import {ProfileService} from '../profile.service';
+import {BehaviorSubject, of, Subject} from 'rxjs';
+import {ProfileService} from './profile.service';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   isEdit = new BehaviorSubject(false);
   profileForm = this.fb.group({
     username: [{value: '', disabled: !this.isEdit.value}],
@@ -16,17 +17,21 @@ export class ProfileComponent implements OnInit {
     email: [{value: '', disabled: !this.isEdit.value}],
     description: [{value: '', disabled: !this.isEdit.value}],
   });
+  private onDestroy = new Subject();
 
+  // TODO: inject store
   constructor(private fb: FormBuilder, private profileService: ProfileService) {
   }
 
   ngOnInit() {
-    this.profileService.profile.subscribe(val => this.profileForm.patchValue(val));
+    // TODO: Switch to selector to profile
+    this.profileService.profile.pipe(takeUntil(this.onDestroy)).subscribe(val => this.profileForm.patchValue(val));
   }
 
-  toggleEdit() {
+  toggleEditAndSave() {
     if (this.isEdit.value) {
       this.isEdit.next(false);
+      // TODO: Dispatch save profile action
       this.profileService.setProfile(this.profileForm.getRawValue());
       Object.keys(this.profileForm.controls).forEach(key => {
         this.profileForm.controls[key].disable();
@@ -39,4 +44,8 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  ngOnDestroy(): void {
+    this.onDestroy.next();
+    this.onDestroy.complete();
+  }
 }

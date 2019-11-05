@@ -12,7 +12,7 @@ export class AddItemFormComponent implements OnInit {
     name: ['', Validators.required],
     quantity: ['', Validators.required]
   });
-
+  // TODO: Inject Store
   constructor(private fb: FormBuilder, private shoppingListService: ShoppingListService) {
   }
 
@@ -21,6 +21,7 @@ export class AddItemFormComponent implements OnInit {
 
   addItemToList() {
     const shoppingListItem = {...this.addItemForm.value, acquired: false};
+    // TODO: Dispatch addListItem action
     this.shoppingListService.addItem(shoppingListItem);
     this.addItemForm.reset();
   }

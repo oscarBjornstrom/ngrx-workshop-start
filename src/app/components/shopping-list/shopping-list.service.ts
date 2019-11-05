@@ -7,28 +7,32 @@ import {ShoppingListItemModel} from './shopping-list-item.model';
 })
 export class ShoppingListService {
   shoppingList = new BehaviorSubject<ShoppingListItemModel[]>([]);
-  totalLeft = new BehaviorSubject<number>(0);
 
   constructor() {
   }
 
   addItem(newItem: ShoppingListItemModel) {
+    // TODO: Move to reducer
     const newArr = [...this.shoppingList.value, newItem];
     this.shoppingList.next(newArr);
-    this.totalLeft.next(this.calculateTotalLeft());
   }
 
   removeItem(removeIndex) {
+    // TODO: Move to reducer
     const newArr = this.shoppingList.value.filter((item, index) => index !== removeIndex);
     this.shoppingList.next(newArr);
-    this.totalLeft.next(this.calculateTotalLeft());
   }
 
-  clearList() {
-    this.shoppingList.next([]);
+  toggleAcquired(index) {
+    // TODO: Move to reducer
+    const updatedArray = this.shoppingList.value.map((item, i) => {
+      if (i !== index) {
+        return;
+      }
+      return {...item, acquired: !item.acquired};
+    });
+    this.shoppingList.next(updatedArray);
   }
 
-  calculateTotalLeft() {
-    return this.shoppingList.value.filter(item => item.acquired === false).length;
-  }
+
 }

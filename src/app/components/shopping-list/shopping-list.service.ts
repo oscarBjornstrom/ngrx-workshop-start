@@ -12,19 +12,19 @@ export class ShoppingListService {
   }
 
   addItem(newItem: ShoppingListItemModel) {
-    // TODO: Move to reducer
+    // TODO 33: Move to reducer
     const newArr = [...this.shoppingList.value, newItem];
     this.shoppingList.next(newArr);
   }
 
   removeItem(removeIndex) {
-    // TODO: Move to reducer
+    // TODO 34: Move to reducer
     const newArr = this.shoppingList.value.filter((item, index) => index !== removeIndex);
     this.shoppingList.next(newArr);
   }
 
   toggleAcquired(index) {
-    // TODO: Move to reducer
+    // TODO: 35 Move to reducer
     const updatedArray = this.shoppingList.value.map((item, i) => {
       if (i !== index) {
         return;

@@ -8,10 +8,10 @@ import {tap} from 'rxjs/operators';
   styleUrls: ['./shopping-list.component.scss']
 })
 export class ShoppingListComponent implements OnInit {
-  // TODO: use store selector
+  // TODO 42: use store selector
   shoppingList$ = this.shoppingListService.shoppingList;
 
-  // TODO: Inject store
+  // TODO 38: Inject store
   constructor(private shoppingListService: ShoppingListService) {
   }
 
@@ -19,12 +19,12 @@ export class ShoppingListComponent implements OnInit {
   }
 
   removeItem(index) {
-    // TODO: Dispatch remove item action
+    // TODO 39: Dispatch remove item action
     this.shoppingListService.removeItem(index);
   }
 
   updateItem(index) {
-    // TODO: Dispatch toggle acquired action
+    // TODO 40: Dispatch toggle acquired action
     this.shoppingListService.toggleAcquired(index);
   }
 }

@@ -6,33 +6,33 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./counter-page.component.scss']
 })
 export class CounterPageComponent implements OnInit {
-  // TODO: Change counter into an observable
+  // TODO 14: Select counter from store
   counter = 0;
   numInput = 0;
 
-  // TODO: Inject store
+  // TODO 7: Inject store
   constructor() {
   }
 
   ngOnInit() {
   }
 
-  // TODO: dispatch increment action
+  // TODO 8: dispatch increment action
   addOne() {
     this.counter++;
   }
 
-  // TODO: dispatch decrement action
+  // TODO 9: dispatch decrement action
   removeOne() {
     this.counter--;
   }
 
-  // TODO: dispatch reset action
+  // TODO 10: dispatch reset action
   reset() {
     this.counter = 0;
   }
 
-  // TODO: dispatch setValue action
+  // TODO 11: dispatch setValue action
   setValue() {
     this.counter = this.numInput;
   }

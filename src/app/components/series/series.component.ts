@@ -8,7 +8,7 @@ import {GOTmock} from '../../shared/mocks/series.mock';
   styleUrls: ['./series.component.scss']
 })
 export class SeriesComponent implements OnInit {
-// TODO: add-series selector to series
+
   serie$ = of(Array.from({length: 8}, () => GOTmock));
 
   constructor() { }

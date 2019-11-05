@@ -19,19 +19,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
   });
   private onDestroy = new Subject();
 
-  // TODO: inject store
+  // TODO 21: inject store
   constructor(private fb: FormBuilder, private profileService: ProfileService) {
   }
 
   ngOnInit() {
-    // TODO: Switch to selector to profile
+    // TODO 24: Switch to profileSelector
     this.profileService.profile.pipe(takeUntil(this.onDestroy)).subscribe(val => this.profileForm.patchValue(val));
   }
 
   toggleEditAndSave() {
     if (this.isEdit.value) {
       this.isEdit.next(false);
-      // TODO: Dispatch save profile action
+      // TODO 22: Dispatch save profile action
       this.profileService.setProfile(this.profileForm.getRawValue());
       Object.keys(this.profileForm.controls).forEach(key => {
         this.profileForm.controls[key].disable();

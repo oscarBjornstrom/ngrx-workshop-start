@@ -1,8 +1,12 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {BehaviorSubject, of, Subject} from 'rxjs';
-import {ProfileService} from './profile.service';
+
 import {takeUntil} from 'rxjs/operators';
+import {Store} from '@ngrx/store';
+import {State} from '../../store/reducers';
+import {selectProfile} from '../../store/selectors/profile.selector';
+import {setProfile} from '../../store/actions/profile.actions';
 
 @Component({
   selector: 'app-profile',
@@ -19,20 +23,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
   });
   private onDestroy = new Subject();
 
-  // TODO 21: inject store
-  constructor(private fb: FormBuilder, private profileService: ProfileService) {
+  constructor(private fb: FormBuilder, private store: Store<State>) {
   }
 
   ngOnInit() {
-    // TODO 24: Switch to profileSelector
-    this.profileService.profile.pipe(takeUntil(this.onDestroy)).subscribe(val => this.profileForm.patchValue(val));
+    this.store.select(selectProfile).pipe(takeUntil(this.onDestroy)).subscribe(val => this.profileForm.patchValue(val));
   }
 
   toggleEditAndSave() {
     if (this.isEdit.value) {
       this.isEdit.next(false);
-      // TODO 22: Dispatch save profile action
-      this.profileService.setProfile(this.profileForm.getRawValue());
+      this.store.dispatch(setProfile({profile: this.profileForm.getRawValue()}));
+
       Object.keys(this.profileForm.controls).forEach(key => {
         this.profileForm.controls[key].disable();
       });

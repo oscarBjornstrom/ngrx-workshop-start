@@ -2,8 +2,7 @@
   <h1>Counter</h1>
 
   <div>
-    <!-- TODO 15: add async pipe-->
-    <p>{{counter}}</p>
+    <p>{{(counter$ | async).counter}}</p>
   </div>
   <mat-card-actions>
     <button mat-stroked-button (click)="addOne()">+1</button>

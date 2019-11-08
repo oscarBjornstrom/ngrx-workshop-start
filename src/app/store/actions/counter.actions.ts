@@ -1,4 +1,7 @@
-// TODO 1: add action for increment
-// TODO 2: add action for decrement
-// TODO 3: add action for reset
-// TODO 4: add action for setValue
+
+import {createAction, props} from '@ngrx/store';
+
+export const increment = createAction('[Counter] increment');
+export const decrement = createAction('[Counter] decrement');
+export const reset = createAction('[Counter] reset');
+export const setValue = createAction('[Counter] setValue', props<{newValue: number}>());

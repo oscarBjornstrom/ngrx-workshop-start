@@ -1,6 +1,6 @@
 <app-add-item-form></app-add-item-form>
 
-<ng-container *ngIf="shoppingList$ | async as list">
+<ng-container *ngIf="(shoppingList$ | async).shoppingList as list">
 
 
   <mat-card *ngIf="list.length">

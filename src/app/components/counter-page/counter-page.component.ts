@@ -1,4 +1,8 @@
 import {Component, OnInit} from '@angular/core';
+import {State} from '../../store/reducers';
+import {Store} from '@ngrx/store';
+import * as fromCounterActions from '../../store/actions/counter.actions';
+import {selectCounterState} from '../../store/selectors/counter.selectors';
 
 @Component({
   selector: 'app-counter-page',
@@ -6,35 +10,37 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./counter-page.component.scss']
 })
 export class CounterPageComponent implements OnInit {
-  // TODO 14: Select counter from store
-  counter = 0;
+
+
+  counter$ = this.store.select(selectCounterState);
+
+
   numInput = 0;
 
-  // TODO 7: Inject store
-  constructor() {
+
+  constructor(private store: Store<State>) {
   }
 
   ngOnInit() {
   }
 
-  // TODO 8: dispatch increment action
+
   addOne() {
-    this.counter++;
+    this.store.dispatch(fromCounterActions.increment());
   }
 
-  // TODO 9: dispatch decrement action
+
   removeOne() {
-    this.counter--;
+    this.store.dispatch(fromCounterActions.decrement());
   }
 
-  // TODO 10: dispatch reset action
+
   reset() {
-    this.counter = 0;
+    this.store.dispatch(fromCounterActions.reset());
   }
 
-  // TODO 11: dispatch setValue action
   setValue() {
-    this.counter = this.numInput;
+    this.store.dispatch(fromCounterActions.setValue({newValue: this.numInput}));
   }
 }
 

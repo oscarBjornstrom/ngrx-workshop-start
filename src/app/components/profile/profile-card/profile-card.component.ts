@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ProfileService} from '../profile.service';
+import {State} from '../../../store/reducers';
+import {Store} from '@ngrx/store';
+import {selectProfile} from '../../../store/selectors/profile.selector';
 
 @Component({
   selector: 'app-profile-card',
@@ -7,9 +9,8 @@ import {ProfileService} from '../profile.service';
   styleUrls: ['./profile-card.component.scss']
 })
 export class ProfileCardComponent implements OnInit {
-  // TODO 25: Switch to profile selector
-  profile = this.profileService.profile;
-  constructor(private profileService: ProfileService) { }
+  profile = this.store.select(selectProfile);
+  constructor(private store: Store<State>) { }
 
   ngOnInit() {
   }

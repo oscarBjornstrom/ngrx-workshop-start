@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
-import {ShoppingListService} from '../shopping-list.service';
+import {State} from '../../../store/reducers';
+import {Store} from '@ngrx/store';
+import {addListItem} from '../../../store/actions/shopping-list.actions';
 
 @Component({
   selector: 'app-add-item-form',
@@ -12,8 +14,7 @@ export class AddItemFormComponent implements OnInit {
     name: ['', Validators.required],
     quantity: ['', Validators.required]
   });
-  // TODO 36: Inject Store
-  constructor(private fb: FormBuilder, private shoppingListService: ShoppingListService) {
+  constructor(private fb: FormBuilder, private store: Store<State>) {
   }
 
   ngOnInit() {
@@ -21,8 +22,8 @@ export class AddItemFormComponent implements OnInit {
 
   addItemToList() {
     const shoppingListItem = {...this.addItemForm.value, acquired: false};
-    // TODO 37: Dispatch addListItem action
-    this.shoppingListService.addItem(shoppingListItem);
+
+    this.store.dispatch(addListItem({newItem: shoppingListItem}));
     this.addItemForm.reset();
   }
 

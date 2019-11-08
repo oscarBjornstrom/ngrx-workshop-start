@@ -1,15 +1,21 @@
 import {
   ActionReducerMap,
 } from '@ngrx/store';
+import * as fromCounter from './counter.reducer';
+import * as fromShoppingList from './shopping-list.reducer';
+import {profileReducer, ProfileState} from './profile.reducer';
 
 
-// TODO 7: Hook up Counter reducer
-// TODO 20: Hook up Profile reducer
-// TODO 32: hook up shoppingListReducer
 export interface State {
-
+  counter: fromCounter.CounterState;
+  profile: ProfileState;
+  shoppingList: fromShoppingList.ShoppingListState;
 }
 
-export const reducers: ActionReducerMap<State> = {};
+export const reducers: ActionReducerMap<State> = {
+  counter: fromCounter.counterReducer,
+  profile: profileReducer,
+  shoppingList: fromShoppingList.shoppingListReducer
+};
 
-// TODO 12: create selector for rootstate
+export const selectRootState = state => state;
